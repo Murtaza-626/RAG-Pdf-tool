@@ -24,37 +24,7 @@ def get_llm():
         ]
     )
     return llm
-
-
-# def clean_response(response):
-#     """Remove unwanted conversational artifacts from model output."""
-#     # Remove common AI chat patterns
-#     patterns_to_remove = [
-#         r"^(Hello|Hi|Hey)[\s,!.]*",
-#         r"^(User|Human|Assistant|AI|Bot)[\s:]*",
-#         r"^(Sure|Certainly|Of course)[\s,!.]*",
-#         r"^(I'd be happy to|I can help|Let me)[\s\w]*[.!]?\s*",
-#         r"^(Based on the (text|context|document|information))[\s,]*",
-#         r"^(According to the (text|context|document|information))[\s,]*",
-#         r"\n(User|Human|Assistant|AI)[\s:]+.*$",
-#         r"^[\s\n]*Answer[\s:]*",
-#         r"^[\s\n]*Summary[\s:]*",
-#     ]
     
-#     cleaned = response.strip()
-#     for pattern in patterns_to_remove:
-#         cleaned = re.sub(pattern, "", cleaned, flags=re.IGNORECASE | re.MULTILINE)
-    
-#     # Remove any trailing conversation
-#     # if "\nUser:" in cleaned:
-#     #     cleaned = cleaned.split("\nUser:")[0]
-#     # if "\nHuman:" in cleaned:
-#     #     cleaned = cleaned.split("\nHuman:")[0]
-#     # if "\nAssistant:" in cleaned:
-#     #     cleaned = cleaned.split("\nAssistant:")[0]
-    
-#     return cleaned.strip()
-
 
 # PDF processing functions:
 def document_loader(file):
@@ -212,5 +182,6 @@ with tab2:
 
 st.divider()
 st.info(f"Using Ollama Model: {OLLAMA_MODEL}")
+
 
 
