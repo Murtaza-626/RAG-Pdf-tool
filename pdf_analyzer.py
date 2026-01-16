@@ -1,8 +1,7 @@
 import streamlit as st
 
 # LangChain imports
-from langchain.chains import create_retrieval_chain
-from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain.chains import RetrievalQA
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
@@ -77,21 +76,23 @@ Direct Answer:"""
 
 
 def get_qa_chain(retriever_obj):
+    """Create a QA chain with custom prompt."""
     llm = get_llm()
-
+    
     prompt = PromptTemplate(
         template=QA_PROMPT_TEMPLATE,
         input_variables=["context", "question"]
     )
-
-    doc_chain = create_stuff_documents_chain(llm, prompt)
-
-    retrieval_chain = create_retrieval_chain(
-        retriever_obj,
-        doc_chain
+    
+    qa_chain = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=retriever_obj,
+        return_source_documents=False,
+        chain_type_kwargs={"prompt": prompt}
     )
+    return qa_chain
 
-    return retrieval_chain
 
 
 def summarize_text(text):
@@ -182,6 +183,7 @@ with tab2:
 
 st.divider()
 st.info(f"Using Ollama Model: {OLLAMA_MODEL}")
+
 
 
 
