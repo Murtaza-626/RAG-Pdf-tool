@@ -5,7 +5,6 @@ from langchain.chains.retrieval_qa.base import RetrievalQA
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
-from langchain.chains import RetrievalQA
 from langchain_community.llms.ollama import Ollama
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.prompts import PromptTemplate
@@ -183,6 +182,7 @@ with tab2:
 
 st.divider()
 st.info(f"Using Ollama Model: {OLLAMA_MODEL}")
+
 
 
 
