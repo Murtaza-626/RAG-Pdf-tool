@@ -1,6 +1,4 @@
 import streamlit as st
-from dotenv import load_dotenv
-import re
 
 # LangChain imports
 from langchain_community.document_loaders import PyPDFLoader
@@ -214,4 +212,5 @@ with tab2:
 
 st.divider()
 st.info(f"Using Ollama Model: {OLLAMA_MODEL}")
+
 
