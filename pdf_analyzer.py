@@ -1,7 +1,8 @@
 import streamlit as st
 
 # LangChain imports
-from langchain.chains.retrieval_qa.base import RetrievalQA
+from langchain.chains import create_retrieval_chain
+from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
@@ -151,7 +152,7 @@ with tab1:
                 retriever_obj = db.as_retriever(search_kwargs={"k": 4})
                 
                 qa_chain = get_qa_chain(retriever_obj)
-                response = qa_chain.invoke({"query": question})
+                response = qa_chain.invoke({"input": question})
                 
                 # answer = clean_response(response["result"])
                 
@@ -182,6 +183,7 @@ with tab2:
 
 st.divider()
 st.info(f"Using Ollama Model: {OLLAMA_MODEL}")
+
 
 
 
