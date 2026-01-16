@@ -1,8 +1,8 @@
 streamlit>=1.26
 python-dotenv>=1.0
-langchain>=0.1.123
+langchain==0.1.20
 langchain-community>=0.1.5
-chromadb>=0.3.26
+langchain-text-splitters>=0.0.1
+chromadb>=0.4.0
 sentence-transformers>=2.2.2
 huggingface-hub>=0.17.4
-
