@@ -9,7 +9,6 @@ from langchain_community.llms.ollama import Ollama
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.prompts import PromptTemplate
 
-load_dotenv()
 
 OLLAMA_MODEL = "mistral"
 
@@ -183,6 +182,7 @@ with tab2:
 
 st.divider()
 st.info(f"Using Ollama Model: {OLLAMA_MODEL}")
+
 
 
 
